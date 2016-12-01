@@ -23,7 +23,10 @@ describe GildedRose do
       expect(items[0].quality).to eq(6)
     end
 
-
-
+    it "the quality of +5 Dexterity Vest is never negative" do
+      items = [Item.new("+5 Dexterity Vest", 10, 20)]
+      25.times {GildedRose.new(items).update_quality()}
+      expect(items[0].quality).to eq(0)
+    end
   end
 end
