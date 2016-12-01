@@ -38,6 +38,13 @@ describe GildedRose do
           expect(items[0].quality).to eq(1)
         end
 
+        it "increases in quality twice as fast after its sell by date" do
+          items = [Item.new("Aged Brie", 2, 0)]
+          4.times {GildedRose.new(items).update_quality()}
+          expect(items[0].quality).to eq(6)
+        end
+
+
       end
 
   end
