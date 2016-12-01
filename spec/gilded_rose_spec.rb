@@ -13,8 +13,17 @@ describe GildedRose do
 
     it "degrades in quality by one each day as it approaches its sell by date" do
       items = [Item.new("+5 Dexterity Vest", 10, 20)]
-      p GildedRose.new(items).update_quality()
+      GildedRose.new(items).update_quality()
       expect(items[0].quality).to eq(19)
     end
+
+    it "degrades twice as fast after its sell by date" do
+      items = [Item.new("+5 Dexterity Vest", 10, 20)]
+      12.times {GildedRose.new(items).update_quality()}
+      expect(items[0].quality).to eq(6)
+    end
+
+
+
   end
 end
