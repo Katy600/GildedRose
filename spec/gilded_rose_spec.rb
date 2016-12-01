@@ -1,5 +1,6 @@
 # require File.join(File.dirname(__FILE__), 'gilded_rose')
 require "gilded_rose"
+# require "texttest_fixture"
 
 describe GildedRose do
 
@@ -9,6 +10,11 @@ describe GildedRose do
       GildedRose.new(items).update_quality()
       expect(items[0].name).to eq "fixme"
     end
-  end
 
+    it "degrades in quality by one each day as it approaches its sell by date" do
+      items = [Item.new("+5 Dexterity Vest", 10, 20)]
+      p GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq(19)
+    end
+  end
 end
