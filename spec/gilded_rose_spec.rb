@@ -72,6 +72,12 @@ describe GildedRose do
           expect(items[0].quality).to eq(21)
         end
 
+        it "increases in quality by 2 after 10 days or less" do
+          items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)]
+          6.times{GildedRose.new(items).update_quality()}
+          expect(items[0].quality).to eq(27)
+        end
+
     end
   end
 end
