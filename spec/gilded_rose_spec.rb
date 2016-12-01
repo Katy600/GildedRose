@@ -49,9 +49,22 @@ describe GildedRose do
           100.times {GildedRose.new(items).update_quality()}
           expect(items[0].quality).to eq(50)
         end
-
-
       end
 
+      context 'Sulfuras' do
+
+        it "always remains at 80" do
+          items = [Item.new("Sulfuras, Hand of Ragnaros", 0, 80)]
+          40.times {GildedRose.new(items).update_quality()}
+          expect(items[0].quality).to eq(80)
+        end
+
+        it "always remains at 80" do
+          items = [Item.new("Sulfuras, Hand of Ragnaros", -1, 80)]
+          40.times {GildedRose.new(items).update_quality()}
+          expect(items[0].quality).to eq(80)
+        end
+
+      end
   end
 end
